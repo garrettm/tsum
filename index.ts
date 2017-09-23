@@ -19,6 +19,8 @@ export interface Sum<U> {
 
   typeOf: TypeOf<U>
 
+  match: <B>(a: U[keyof U], p: Pattern<U, B>) => B
+
   f: <B>(p: Pattern<U, B>) => ((a: U[keyof U]) => B) & Pattern<U, B>
 
   f2: <B, C>(p: Pattern2<U, B, C>) => ((a: U[keyof U], b: B) => C) & Pattern2<U, B, C>
@@ -53,6 +55,10 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
     } as any,
 
     typeOf,
+
+    match: <B>(a: A, p: Pattern<U, B>): B => {
+      return p[typeof(a)](a)
+    },
 
     f: <B>(p: Pattern<U, B>): ((a: A) => B) & Pattern<U, B> => {
       const match1 = (a: A): B => {
