@@ -2,13 +2,13 @@
 Typescript sum types with pattern matching, using multimethods
 
 ## Example
-```
+```ts
 import Sum from 'tsum'
 ```
 
 
 Describe each of your types:
-```
+```ts
 interface Dog {
   name: string
   color: string
@@ -29,7 +29,7 @@ interface Cow {
 ```
 
 Put them together:
-```
+```ts
 interface Animals {
   Dog: Dog
   Cat: Cat
@@ -39,7 +39,7 @@ interface Animals {
 ```
 
 Provide the Animals interface, along with a function that returns an Animal's type to create a Sum type:
-```
+```ts
 const Animal = Sum<Animals>({
   typeOf: (animal: any) => {
     if (animal.color !== undefined) { return 'Dog' }
@@ -53,7 +53,7 @@ const Animal = Sum<Animals>({
 
 
 Create functions that act on any Animal:
-```
+```ts
 // The type of describe is: (animal: Animal) => string
 const describe = Animal.f({
   // here Typescript knows that `dog` is of type Dog
@@ -75,7 +75,7 @@ console.log(describe(cow))     // a loud cow
 ```
 
 Or match inline:
-```
+```ts
 const cat = {name: 'Oberyn', dogFriendly: false}
 const cost = Animal.match(cat, {
   Dog: dog => dog.name === 'Zorro' ? 99999 : 300,
@@ -87,7 +87,7 @@ console.log(cost) // 99999
 ```
 
 Convenience to avoid repeating yourself:
-```
+```ts
 // Evaluates to Dog | Cat | Chicken | Cow
 type Animal = typeof Animal.types
 ```
