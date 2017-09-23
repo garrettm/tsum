@@ -57,7 +57,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
     typeOf,
 
     match: <B>(a: A, p: Pattern<U, B>): B => {
-      return p[typeof(a)](a)
+      return p[typeOf(a)](a)
     },
 
     f: <B>(p: Pattern<U, B>): ((a: A) => B) & Pattern<U, B> => {
