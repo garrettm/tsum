@@ -1,0 +1,12 @@
+{
+  "name": "tsum",
+  "version": "0.1.0",
+  "description": "Typescript sum types with pattern matching, using multimethods",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "tsc --outDir dist/"
+  },
+  "author": "Garrett Mitchell",
+  "license": "ISC"
+}
