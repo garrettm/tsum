@@ -38,8 +38,7 @@ interface Animals {
 }
 ```
 
-Create a sum type, using the defined interface, and
-providing a function to determine type:
+Provide the Animals interface, along with a function that returns an Animal's type to create a Sum type:
 ```
 const Animal = Sum<Animals>({
   typeOf: (animal: any) => {
