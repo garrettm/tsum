@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "tsc --outDir dist/"
+    "prepublishOnly": "tsc"
   },
   "author": "Garrett Mitchell",
   "license": "ISC"
