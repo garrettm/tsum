@@ -7,6 +7,13 @@
   "scripts": {
     "prepublishOnly": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garrettm/tsum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/garrettm/tsum/issues"
+  },
   "author": "Garrett Mitchell",
   "license": "ISC"
 }
