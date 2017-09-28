@@ -1,6 +1,24 @@
 # tsum
 Typescript sum types with pattern matching, using multimethods
 
+## Motivation
+
+First, watch https://www.youtube.com/watch?v=-6BsiVyC1kM
+
+Being able to simply represent and manipulate values is one of the most important things a programming language can provide.
+
+Typescript offers two built in solutions for polymorphism:
+1. Add a 'type' field to all your data, and switch on it.  This is verbose, requires explicit serialize/deserialize, and error prone when specifying literal data.  Additionally, switch offers no exhaustiveness guarantee, and is a statement, making it not very conducive to programming with functions.
+2. Put your data into classes.  This is verbose, requires explicit serialize/deserialize and lacks named fields (`new Person('Garrett')` vs `{name: 'Garrett'}`).  Most importantly, you lose the ability to easily make new immutable values from previous values.
+
+Using plain data structures solves many of these problems, and improves notation:
+- values are trivial to persist or send over a wire, and trivial to read when receiving data from the wire or disk
+- data definitions are as terse and straightforward as possible in Typescript
+- fields are named
+- open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
+- matching every possible case is enforced by the compiler, and the switch-equivalent is an expression, returning a value
+- critically, you gain the ability to use regular spread syntax to immutably produce new values: `{...person, name: 'Oberyn'}`
+
 ## Example
 ```ts
 import Sum from 'tsum'
