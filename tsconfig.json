@@ -11,7 +11,8 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "lib": ["dom", "es6"]
   },
   "files": [
     "index.ts"
