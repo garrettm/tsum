@@ -64,7 +64,6 @@ const Animal = Sum<Animals>({
     if (typeof animal.dogFriendly === 'boolean') { return 'Cat' }
     if (typeof animal.eggsLaid === 'number') { return 'Chicken' }
     if (typeof animal.mooVolume === 'number') { return 'Cow' }
-    return null
   }
 })
 ```
