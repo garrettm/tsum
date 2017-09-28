@@ -2,8 +2,7 @@
 Typescript sum types with pattern matching, using multimethods
 
 ## Motivation
-
-First, watch https://www.youtube.com/watch?v=-6BsiVyC1kM
+First, watch [The Value of Values](https://www.youtube.com/watch?v=-6BsiVyC1kM)
 
 Being able to simply represent and manipulate values is one of the most important things a programming language can provide.
 
@@ -56,15 +55,15 @@ interface Animals {
 }
 ```
 
-Provide the Animals interface, along with a function that returns an Animal's type to create a Sum type:
+Provide the Animals interface, along with a set of predicates to determine the type of an arbitrary Animal:
 ```ts
 const Animal = Sum<Animals>({
-  typeOf: (animal: any) => {
-    if (typeof animal.color === 'string') { return 'Dog' }
-    if (typeof animal.dogFriendly === 'boolean') { return 'Cat' }
-    if (typeof animal.eggsLaid === 'number') { return 'Chicken' }
-    if (typeof animal.mooVolume === 'number') { return 'Cow' }
-  }
+  predicates: ({isString, isBoolean, isNumber}) => ({
+    Dog:     _ => isString(_.color),
+    Cat:     _ => isBoolean(_.dogFriendly),
+    Chicken: _ => isNumber(_.eggsLaid),
+    Cow:     _ => isNumber(_.mooVolume)
+  })
 })
 ```
 
