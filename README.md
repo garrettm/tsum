@@ -2,11 +2,9 @@
 Typescript sum types with pattern matching, using multimethods
 
 ## Motivation
-First, watch [The Value of Values](https://www.youtube.com/watch?v=-6BsiVyC1kM)
+Being able to simply represent, manipulate, and pattern match on immutable values is one of the most important things a programming language can provide.
 
-Being able to simply represent and manipulate values is one of the most important things a programming language can provide.
-
-Typescript offers two built in solutions for polymorphism:
+Typescript offers two built-in solutions:
 1. Add a 'type' field to all your data, and switch on it.  This is verbose, requires explicit serialize/deserialize, and error prone when specifying literal data.  Additionally, switch offers no exhaustiveness guarantee, and is a statement rather than an expression.
 2. Put your data into classes.  This is verbose, requires explicit serialize/deserialize and lacks named fields (`new Person('Garrett')` vs `{name: 'Garrett'}`).  Most importantly, you lose the ability to easily make new immutable values from previous values.
 
@@ -16,7 +14,7 @@ Using plain data structures solves many of these problems, and improves notation
 - fields are named
 - open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
 - matching every possible case is enforced by the compiler, and matches are expressions which return a value
-- critically, you gain the ability to use regular spread syntax to immutably produce new values: `{...person, name: 'Oberyn'}`
+- critically, you gain the ability to use spread notation to immutably produce new values: `{...person, name: 'Oberyn'}`
 
 ## Example
 ```ts
@@ -107,3 +105,6 @@ Convenience to avoid repeating yourself:
 // Evaluates to Dog | Cat | Chicken | Cow
 type Animal = typeof Animal.types
 ```
+
+## Thanks to:
+[The Value of Values](https://www.youtube.com/watch?v=-6BsiVyC1kM)
