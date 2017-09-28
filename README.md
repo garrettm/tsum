@@ -60,10 +60,10 @@ Provide the Animals interface, along with a function that returns an Animal's ty
 ```ts
 const Animal = Sum<Animals>({
   typeOf: (animal: any) => {
-    if (animal.color !== undefined) { return 'Dog' }
-    if (animal.dogFriendly !== undefined) { return 'Cat' }
-    if (animal.eggsLaid !== undefined) { return 'Chicken' }
-    if (animal.mooVolume !== undefined) { return 'Cow' }
+    if (typeof animal.color === 'string') { return 'Dog' }
+    if (typeof animal.dogFriendly === 'boolean') { return 'Cat' }
+    if (typeof animal.eggsLaid === 'number') { return 'Chicken' }
+    if (typeof animal.mooVolume === 'number') { return 'Cow' }
     return null
   }
 })
