@@ -15,7 +15,7 @@ Using plain data structures solves many of these problems, and improves notation
 - data definitions are as terse and straightforward as possible in Typescript
 - fields are named
 - open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
-- matching every possible case is enforced by the compiler, and the switch-equivalent is an expression, returning a value
+- matching every possible case is enforced by the compiler, and matches are expressions which return a value
 - critically, you gain the ability to use regular spread syntax to immutably produce new values: `{...person, name: 'Oberyn'}`
 
 ## Example
