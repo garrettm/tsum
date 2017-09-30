@@ -79,7 +79,7 @@ Create functions that act on any Animal:
 ```ts
 // The type of describe is: (animal: Animal) => string
 const describe = Animal.f({
-  // here Typescript knows that `dog` is of type Dog
+  // Typescript knows the type in each branch, and makes sure you cover all cases
   Dog: dog => `a ${dog.color} dog named ${dog.name}`,
   Cat: cat => cat.dogFriendly ? `a cat named ${cat.name} (dog-friendly)` : `a cat named ${cat.name} (not dog-friendly)`,
   Chicken: chicken => `a chicken who has laid ${chicken.eggsLaid} eggs`,
