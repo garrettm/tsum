@@ -11,7 +11,9 @@ Being able to simply represent, manipulate, and pattern match on immutable value
 
 Typescript offers two built-in solutions:
 1. Add a 'type' field to all your data, and switch on it.  This is verbose, requires explicit serialize/deserialize, and error prone when specifying literal data.  Additionally, switch offers no exhaustiveness guarantee, and is a statement rather than an expression.
-2. Put your data into classes.  This is verbose, requires explicit serialize/deserialize and lacks named fields (`new Person('Garrett')` vs `{name: 'Garrett'}`).  Most importantly, you lose the ability to easily make new immutable values from previous values.
+2. Put your data into classes.  This is verbose, requires explicit serialize/deserialize and lacks named fields:  
+`new Person('Garrett')` vs `{name: 'Garrett'}`  
+Most importantly, you lose the ability to easily make new immutable values from previous values.
 
 Using plain data structures solves many of these problems, and improves notation:
 - values are trivial to persist or send over a wire, and trivial to read when receiving data from the wire or disk
