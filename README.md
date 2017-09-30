@@ -1,6 +1,11 @@
 # tsum
 Typescript sum types with pattern matching, using multimethods
 
+## Install
+`npm install --save tsum`
+
+`yarn add tsum`
+
 ## Motivation
 Being able to simply represent, manipulate, and pattern match on immutable values is one of the most important things a programming language can provide.
 
