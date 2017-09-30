@@ -16,13 +16,14 @@ Typescript offers two built-in solutions:
 Most importantly, you lose the ability to easily make new immutable values from previous values.
 
 Using plain data structures solves many of these problems, and improves notation:
-- values are trivial to persist or send over a wire, and trivial to read when receiving data from the wire or disk
-- data definitions are as terse and straightforward as possible in Typescript
-- fields are named
-- open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
-- matching every possible case is enforced by the compiler, and matches are expressions which return a value
-- critically, you gain the ability to use spread notation to immutably produce new values:  
-`const olderPerson = {...person, age: person.age + 1}`
+- Values are trivial to persist or send over a wire, and trivial to read when receiving data from the wire or disk
+- Data definitions are as terse and straightforward as possible in Typescript
+- Fields are named
+- Open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
+- Matching every possible case is enforced by the compiler, and matches are expressions which return a value
+- Critically, you gain the ability to use spread notation to flexibly produce new values:  
+`const olderPerson = {...person, age: person.age + 1}`  
+Classes offer no equivalent to this
 
 ## Example
 ```ts
