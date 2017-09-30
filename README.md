@@ -21,7 +21,8 @@ Using plain data structures solves many of these problems, and improves notation
 - fields are named
 - open system, as long as a piece of data matches one of these interfaces, it can participate in this polymorphism (unlike classes)
 - matching every possible case is enforced by the compiler, and matches are expressions which return a value
-- critically, you gain the ability to use spread notation to immutably produce new values: `{...person, name: 'Oberyn'}`
+- critically, you gain the ability to use spread notation to immutably produce new values:  
+`const olderPerson = {...person, age: person.age + 1}`
 
 ## Example
 ```ts
