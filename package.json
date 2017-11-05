@@ -1,6 +1,6 @@
 {
   "name": "tsum",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Typescript sum types with pattern matching, using multimethods",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
