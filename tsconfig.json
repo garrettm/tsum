@@ -12,6 +12,7 @@
     "sourceMap": true,
     "declaration": true,
     "skipLibCheck": true,
+    "strict": true,
     "lib": ["dom", "es6"]
   },
   "files": [

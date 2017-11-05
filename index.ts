@@ -10,7 +10,7 @@ export type Match3<U, B, C, D> = ((a: U[keyof U], b: B, c: C) => D) & Pattern3<U
 export type Match4<U, B, C, D, E> = ((a: U[keyof U], b: B, c: C, d: D) => E) & Pattern4<U, B, C, D, E>
 export type Match5<U, B, C, D, E, F> = ((a: U[keyof U], b: B, c: C, d: D, e: E) => F) & Pattern5<U, B, C, D, E, F>
 
-export type TypeOf<U> = (_: U[keyof U]) => (keyof U) | null
+export type TypeOf<U> = (_: U[keyof U]) => (keyof U) | undefined
 
 export type Predicates<U> = {[K in keyof U]: (arg: U[K]) => boolean}
 export type PredicateProducer<U> = (predicates: typeof Predicates) => Predicates<U>
@@ -55,8 +55,8 @@ export interface Is<U> {
 }
 
 export interface Sum<U> {
-  types?: U[keyof U]
-  names?: keyof U
+  types: U[keyof U]
+  names: keyof U
 
   is: Is<U>
 
@@ -134,8 +134,12 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
     }
   }
 
+  const keyOf = typeOf as (a: A) => TypeNames
 
   const functions: Sum<U> = {
+    types: undefined as any,
+    names: undefined as any,
+
     is: function(typename: TypeNames, _?: A) {
       return arguments.length === 2 ? typeOf(_) === typename : (_: A) => typeOf(_) === typename
     } as any,
@@ -143,7 +147,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
     typeOf,
 
     match: <B>(a: A, p: Pattern<U, B>): B => {
-      return p[typeOf(a)](a)
+      return p[keyOf(a)](a)
     },
 
     f: <B>(p: Pattern<U, B>): Match<U, B> => {
@@ -169,7 +173,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
         }
       }
       else {
-        match1 = a => p[typeOf(a)](a)
+        match1 = a => p[keyOf(a)](a)
       }
       return spreadInto(match1, p)
     },
@@ -197,7 +201,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
         }
       }
       else {
-        match2 = (a, b) => p[typeOf(a)](a, b)
+        match2 = (a, b) => p[keyOf(a)](a, b)
       }
       return spreadInto(match2, p)
     },
@@ -225,7 +229,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
         }
       }
       else {
-        match3 = (a, b, c) => p[typeOf(a)](a, b, c)
+        match3 = (a, b, c) => p[keyOf(a)](a, b, c)
       }
       return spreadInto(match3, p)
     },
@@ -253,7 +257,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
         }
       }
       else {
-        match4 = (a, b, c, d) => p[typeOf(a)](a, b, c, d)
+        match4 = (a, b, c, d) => p[keyOf(a)](a, b, c, d)
       }
       return spreadInto(match4, p)
     },
@@ -281,7 +285,7 @@ export const Sum = <U extends {[key: string]: any}>(input: SumInput<U>) => {
         }
       }
       else {
-        match5 = (a, b, c, d, e) => p[typeOf(a)](a, b, c, d, e)
+        match5 = (a, b, c, d, e) => p[keyOf(a)](a, b, c, d, e)
       }
       return spreadInto(match5, p)
     }
